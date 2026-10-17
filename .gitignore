@@ -1,0 +1,32 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.clang_complete
+.gcc-flags.json
+
+# Arduino / IDE
+*.o
+*.d
+*.elf
+*.bin.bak
+*.hex.bak
+*.map
+build/
+cmake-build-*/
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# VS Code / Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
