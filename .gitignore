@@ -30,3 +30,16 @@ desktop.ini
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+# Upstream esp-fc dependencies (retrieved by PlatformIO/submodule)
+firmware/esp-fc-source/esp-fc-0.2.1/lib/
+!firmware/esp-fc-source/esp-fc-0.2.1/lib/Espfc/src/Device/GyroMPU6050.h
+firmware/esp-fc-source/esp-fc-0.2.1/test/
+firmware/esp-fc-source/esp-fc-0.2.1/bin/
+firmware/esp-fc-source/esp-fc-0.2.1/docker/
+firmware/esp-fc-source/esp-fc-0.2.1/docker-compose.yml
+firmware/esp-fc-source/esp-fc-0.2.1/docs/
+firmware/esp-fc-source/esp-fc-0.2.1/include/
+firmware/esp-fc-source/esp-fc-0.2.1/.github/
+firmware/espfc-v0.2.1-custom-bin/*.bin
+
