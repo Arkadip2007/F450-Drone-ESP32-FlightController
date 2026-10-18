@@ -34,11 +34,13 @@
 - [2. Hardware Architecture & BOM](#2-hardware-architecture--bom)
 - [3. System Architecture & High-Level Design](#3-system-architecture--high-level-design)
 - [4. Low-Level Pin Mapping & Wiring](#4-low-level-pin-mapping--wiring)
-- [5. The Fake/Clone MPU-6050 Challenge & Fix](#5-the-fakeclone-mpu-6050-challenge--fix)
-- [6. Multi-Sensor Diagnostic Suite](#6-multi-sensor-diagnostic-suite)
-- [7. Flashing & PlatformIO Build Guide](#7-flashing--platformio-build-guide)
-- [8. Repository Directory Structure](#8-repository-directory-structure)
-- [9. License & Credits](#9-license--credits)
+- [5. 📸 Visual Schematics & Configurator Tour (Screenshots)](#5--visual-schematics--configurator-tour-screenshots)
+- [6. The Fake/Clone MPU-6050 Challenge & Fix](#6-the-fakeclone-mpu-6050-challenge--fix)
+- [7. Multi-Sensor Diagnostic Suite](#7-multi-sensor-diagnostic-suite)
+- [8. Flashing & PlatformIO Build Guide](#8-flashing--platformio-build-guide)
+- [9. 📘 Complete Engineering Q&A Journey](docs/engineering-qa-troubleshooting.md)
+- [10. Repository Directory Structure](#10-repository-directory-structure)
+- [11. License & Credits](#11-license--credits)
 
 ---
 
@@ -172,7 +174,54 @@ flowchart LR
 
 ---
 
-## 5. The Fake/Clone MPU-6050 Challenge & Fix
+## 5. 📸 Visual Schematics & Configurator Tour (Screenshots)
+
+To provide an intuitive visual setup experience, here are the detailed wiring diagrams, Wi-Fi AP pairing steps, and live Betaflight Configurator screenshots for the ESP32 flight controller:
+
+### 1. Complete ESP32 I2C Sensor Bus Wiring Schematic
+![ESP32 I2C Wiring Schematic](docs/images/esp32-i2c-wiring-schematic.png)
+
+> **Key Observations in this Schematic:**
+> - **Shared I2C Bus:** SCL on **GPIO 22** and SDA on **GPIO 21** with parallel taps for MPU-6050 (`0x68`), BMP280 (`0x76`), and HMC5883L (`0x1E`).
+> - **Clean Power Separation:** Sensors run on regulated 3.3V power from the ESP32 LDO; the FlySky receiver and GPS module run on 5V from the ESC BEC.
+
+---
+
+### 2. Wireless Betaflight Configurator (Over ESP32 Wi-Fi MSP)
+![Betaflight Configurator on ESP32](docs/images/esp32-betaflight-configurator.png)
+
+> **Key Observations in this Screenshot:**
+> - Connects to Betaflight Configurator wirelessly via TCP/IP using MultiWii Serial Protocol (MSP).
+> - Allows real-time tuning of PID gains, rate profiles, and motor testing directly from a laptop on the flight field.
+
+---
+
+### 3. Hardware Pin Verification & CLI Configuration
+![ESP32 CLI Pin Configuration](docs/images/esp32-cli-pin-assignment.png)
+
+> **Key Observations in this Screenshot:**
+> - Shows hardware resource allocation using the esp-fc CLI terminal.
+> - Confirms timer channel mapping for Motor PWM outputs on GPIO 27, 25, 4, and 12.
+
+---
+
+### 4. ESP32 Wi-Fi SoftAP Discovery & Pairing
+![ESP32 Wi-Fi AP](docs/images/esp32-wifi-ap-connection.png)
+
+> **Key Observations in this Screenshot:**
+> - Onboard SoftAP mode (`esp-fc-xxxx`) allows instant connection from any computer or mobile device without an external router.
+
+---
+
+### 5. WebSerial Browser Firmware Flasher
+![ESP32 Web Flasher](docs/images/esp32-firmware-flasher.png)
+
+> **Key Observations in this Screenshot:**
+> - Browser-based one-click flashing workflow using the Web Serial API and esptool.js.
+
+---
+
+## 6. The Fake/Clone MPU-6050 Challenge & Fix
 
 ### The Root Problem
 When purchasing GY-521 breakout boards, many vendors supply remarked clone chips (counterfeit silicon dies or re-marked MPU-6500s).
@@ -201,7 +250,7 @@ This single modification unlocks 100% full hardware functionality while preservi
 
 ---
 
-## 6. Multi-Sensor Diagnostic Suite
+## 7. Multi-Sensor Diagnostic Suite
 
 Located under `sensor-tests/`, these Arduino sketches require **no third-party libraries** and allow complete pre-flight validation:
 
@@ -214,7 +263,7 @@ Located under `sensor-tests/`, these Arduino sketches require **no third-party l
 
 ---
 
-## 7. Flashing & PlatformIO Build Guide
+## 8. Flashing & PlatformIO Build Guide
 
 ### Option A: Flash Precompiled Custom Binary (Easiest)
 
@@ -240,7 +289,14 @@ esptool.py --chip esp32 --port COM_PORT --baud 921600 write_flash -z 0x0 firmwar
 
 ---
 
-## 8. Repository Directory Structure
+## 9. 📘 Complete Engineering Q&A Journey
+
+For a comprehensive chronological breakdown of every problem faced during the ESP32 flight controller development, root-cause analyses, and solutions applied, see the dedicated engineering log:
+- **[Complete Engineering Q&A Troubleshooting Guide (ESP32)](docs/engineering-qa-troubleshooting.md)**
+
+---
+
+## 10. Repository Directory Structure
 
 ```text
 F450-Drone-ESP32-FlightController/
@@ -275,14 +331,22 @@ F450-Drone-ESP32-FlightController/
 │
 └── docs/
     ├── README.md                            # Technical documentation directory
+    ├── engineering-qa-troubleshooting.md    # Complete Q&A engineering journey & fixes
     ├── master-project-documentation.md      # Full engineering log & diagnostics
     ├── wiring-guide.md                      # Detailed step-by-step physical connections
-    └── flashing-guide.md                    # Detailed esptool and PlatformIO flashing instructions
+    ├── flashing-guide.md                    # Detailed esptool and PlatformIO flashing instructions
+    └── images/                              # Visual documentation & schematics
+        ├── README.md                        # Image directory catalog & annotations
+        ├── esp32-i2c-wiring-schematic.png   # Full breadboard & sensor wiring schematic
+        ├── esp32-betaflight-configurator.png# Betaflight Configurator connected over Wi-Fi
+        ├── esp32-cli-pin-assignment.png     # CLI hardware pin verification
+        ├── esp32-wifi-ap-connection.png     # SoftAP Wi-Fi network pairing
+        └── esp32-firmware-flasher.png       # Browser-based firmware flashing
 ```
 
 ---
 
-## 9. License & Credits
+## 11. License & Credits
 
 - **Project Author:** [Arkadip Mahapatra](https://github.com/Arkadip2007)
 - **Base Flight Firmware:** [ESP-FC by rtlopez](https://github.com/rtlopez/esp-fc)
