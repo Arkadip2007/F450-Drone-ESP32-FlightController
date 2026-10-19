@@ -46,6 +46,13 @@
 
 ## 1. Executive Summary
 
+> [!TIP]
+> **🚀 Phase 1 Milestone Achieved: Full 4-Motor Physical Control Unlocked!**
+> Bench-testing on the custom handmade green perfboard has achieved 100% success:
+> - **100% Software Motor Control:** All 4 physical motors spin and respond dynamically via Betaflight Configurator and the RC transmitter, resolving the timer conflict encountered on the STM32 build.
+> - **Smart Perimeter Ground Rail:** Continuous double-layer soldered copper ground bus enables modular zero-cost addition of future sensors without messy crossing wires.
+> - **Cleared for Maiden Flight:** Tested with a minimal, rock-solid sensor setup (Gyro + Accel on MPU-6050) and ready for real-world test flight!
+
 This repository provides everything needed to build, flash, verify, and fly an F450 quadcopter using an **ESP32-WROOM-32 (38-pin DevKit)**. 
 
 ### Key Highlights:
@@ -174,11 +181,11 @@ flowchart LR
 
 ---
 
-## 5. 📸 Visual Schematics & Configurator Tour (Screenshots)
+## 5. 📸 Visual Schematics, Bench Hardware & Telemetry Tour
 
-To provide an intuitive visual setup experience, here are the detailed wiring diagrams, Wi-Fi AP pairing steps, and live Betaflight Configurator screenshots for the ESP32 flight controller:
+### Part A: Wiring Schematics & Wi-Fi Configurator (Screenshots)
 
-### 1. Complete ESP32 I2C Sensor Bus Wiring Schematic
+#### 1. Complete ESP32 I2C Sensor Bus Wiring Schematic
 ![ESP32 I2C Wiring Schematic](docs/images/esp32-i2c-wiring-schematic.png)
 
 > **Key Observations in this Schematic:**
@@ -187,37 +194,50 @@ To provide an intuitive visual setup experience, here are the detailed wiring di
 
 ---
 
-### 2. Wireless Betaflight Configurator (Over ESP32 Wi-Fi MSP)
-![Betaflight Configurator on ESP32](docs/images/esp32-betaflight-configurator.png)
-
-> **Key Observations in this Screenshot:**
-> - Connects to Betaflight Configurator wirelessly via TCP/IP using MultiWii Serial Protocol (MSP).
-> - Allows real-time tuning of PID gains, rate profiles, and motor testing directly from a laptop on the flight field.
-
----
-
-### 3. Hardware Pin Verification & CLI Configuration
-![ESP32 CLI Pin Configuration](docs/images/esp32-cli-pin-assignment.png)
-
-> **Key Observations in this Screenshot:**
-> - Shows hardware resource allocation using the esp-fc CLI terminal.
-> - Confirms timer channel mapping for Motor PWM outputs on GPIO 27, 25, 4, and 12.
+#### 2. Wireless Betaflight Configurator (Over ESP32 Wi-Fi MSP)
+| Wireless Configurator GUI | CLI Hardware Pin Verification |
+| :---: | :---: |
+| ![Betaflight Configurator on ESP32](docs/images/esp32-betaflight-configurator.png) | ![ESP32 CLI Pin Configuration](docs/images/esp32-cli-pin-assignment.png) |
+| Connects to Betaflight Configurator wirelessly via TCP/IP using MultiWii Serial Protocol (MSP). | Hardware resource allocation and timer mapping verification via the esp-fc CLI terminal. |
 
 ---
 
-### 4. ESP32 Wi-Fi SoftAP Discovery & Pairing
-![ESP32 Wi-Fi AP](docs/images/esp32-wifi-ap-connection.png)
-
-> **Key Observations in this Screenshot:**
-> - Onboard SoftAP mode (`esp-fc-xxxx`) allows instant connection from any computer or mobile device without an external router.
+#### 3. Wi-Fi SoftAP Pairing & Browser Flasher
+| ESP32 SoftAP Hotspot Discovery | WebSerial One-Click Browser Flasher |
+| :---: | :---: |
+| ![ESP32 Wi-Fi AP](docs/images/esp32-wifi-ap-connection.png) | ![ESP32 Web Flasher](docs/images/esp32-firmware-flasher.png) |
+| Onboard SoftAP mode (`esp-fc-xxxx`) allows instant connection from any computer without an external router. | Browser-based one-click flashing workflow using the Web Serial API and esptool.js. |
 
 ---
 
-### 5. WebSerial Browser Firmware Flasher
-![ESP32 Web Flasher](docs/images/esp32-firmware-flasher.png)
+### Part B: Physical Flight Controller Hardware & Active Bench Motor Testing
 
-> **Key Observations in this Screenshot:**
-> - Browser-based one-click flashing workflow using the Web Serial API and esptool.js.
+#### 4. Handmade Green Perfboard PCB (Top Headers & Perimeter Ground Rail)
+| Top View: Component Sockets & ESP32 Pin Headers | Bottom View: Continuous Perimeter Copper Ground Bus |
+| :---: | :---: |
+| ![ESP32 Perfboard Top](docs/images/esp32-green-perfboard-top-headers.jpg) | ![ESP32 Perfboard Bottom](docs/images/esp32-green-perfboard-perimeter-ground-bus.jpg) |
+| Double-sided green plated perfboard with dual female header sockets for 30-pin ESP32 DevKit, sensor expansion headers, and power rails. | **Smart Perimeter Ground Architecture:** Continuous soldered double-layer copper ground rail encircling the entire board edge, eliminating tangled insulated jumper wires for ground returns. |
+
+> **💡 Smart Prototyping Innovation (Double-Layer Perimeter Ground Rail):**
+> Unlike traditional single-layer perfboard builds that require messy, crossing insulated wires for every ground connection, this board features a **continuous soldered copper bus surrounding the entire perimeter**. 
+> - **Zero-Cost Modular Expansion:** Any future sensor (barometer, compass, GPS, or telemetry module) can instantly tap into ground from any edge of the board with a short jumper bridge.
+> - **Clean Signal Integrity:** The outer ground loop helps shield sensitive I2C analog traces from high-frequency motor switching noise.
+
+---
+
+#### 5. Phase 1 Minimal Sensor Testing & Full 4-Motor Physical Control
+| Minimal Reliable Sensor Verification (Betaflight) | Complete F450 Bench Setup with Active Motor Control |
+| :---: | :---: |
+| ![ESP32 Minimal Sensors Telemetry](docs/images/esp32-betaflight-minimal-sensors-telemetry.jpg) | ![ESP32 Drone Bench Motor Testing](docs/images/esp32-drone-complete-bench-motor-control.jpg) |
+| Handheld verification in Betaflight Configurator: 3D attitude tracking active with exactly 2 core sensors enabled (Gyro + Accelerometer). | Complete F450 quadcopter assembled with ESP32 flight controller wired to all 4 SimonK ESCs, validating full software motor spin and direction control. |
+
+> **🎉 Major Milestone — 100% Software Motor Control Achieved:**
+> In our STM32F411 build, timer mapping conflicts prevented the physical motors from spinning via software. **On this ESP32 flight controller, every single motor is fully and independently controllable via Betaflight Configurator and the RC transmitter!**
+> 
+> **Phase 1 Status:** 
+> - **Sensor Configuration:** Kept intentionally minimal (Gyro + Accel on MPU-6050) to minimize I2C bus overhead and guarantee maximum loop frequency and flight stability.
+> - **Ready for Maiden Flight:** The drone has passed all bench tests (ESC calibration, motor spin direction, stick response) and is cleared for its **real-world maiden flight test**!
+> - **Phase 2 Roadmap:** Following a successful flight test, the remaining sensors (BMP280 barometer, QMC5883L compass, NEO-6M GPS) will be populated using the perimeter ground rails.
 
 ---
 

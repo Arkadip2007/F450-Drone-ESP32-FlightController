@@ -48,9 +48,43 @@ This directory hosts high-resolution schematics, wiring diagrams, and configurat
 
 ---
 
+### 6. [Handmade Green Perfboard FC — Top Sockets & Component Layout](esp32-green-perfboard-top-headers.jpg)
+- **File:** `esp32-green-perfboard-top-headers.jpg`
+- **What is shown:**
+  - Double-sided green plated-through-hole perfboard with female pin header sockets for the 30-pin ESP32 DevKit.
+  - Breakout pins for I2C sensors and power lines.
+  - Zero-cost prototyping layout for DIY home construction.
+
+---
+
+### 7. [Handmade Green Perfboard FC — Perimeter Ground Bus Architecture](esp32-green-perfboard-perimeter-ground-bus.jpg)
+- **File:** `esp32-green-perfboard-perimeter-ground-bus.jpg`
+- **What is shown:**
+  - Underside view showing continuous soldered double-layer copper ground rail running around the board perimeter.
+  - Eliminates tangled insulated ground wires, providing low-impedance ground returns and effortless modular expansion for future sensors.
+
+---
+
+### 8. [Minimal Reliable Sensor Telemetry in Betaflight](esp32-betaflight-minimal-sensors-telemetry.jpg)
+- **File:** `esp32-betaflight-minimal-sensors-telemetry.jpg`
+- **What is shown:**
+  - Assembled board in hand in front of Betaflight Configurator.
+  - 3D Quad-X model responding in real time with exactly 2 core sensors active (Gyro & Accelerometer on MPU-6050) for Phase 1 flight stabilization without bus overhead.
+
+---
+
+### 9. [Complete F450 Bench Setup with Active 4-Motor Control](esp32-drone-complete-bench-motor-control.jpg)
+- **File:** `esp32-drone-complete-bench-motor-control.jpg`
+- **What is shown:**
+  - Complete F450 drone on workbench with ESP32 flight controller connected to PC.
+  - All 4 motors independently controllable via software, achieving the Phase 1 milestone and clearing the platform for maiden flight tests.
+
+---
+
 ## 🔗 Cross-References
 - [Main README](../../README.md)
 - [Wiring Guide](../wiring-guide.md)
 - [Flashing Guide](../flashing-guide.md)
 - [Master Project Documentation](../master-project-documentation.md)
 - [Engineering Q&A Troubleshooting Journey](../engineering-qa-troubleshooting.md)
+
