@@ -81,10 +81,32 @@ This directory hosts high-resolution schematics, wiring diagrams, and configurat
 
 ---
 
+### 10. [Hardware Prototyping — Hand-Soldering & Continuity Testing](author-hardware-assembly-hand-soldering.jpg)
+- **File:** `author-hardware-assembly-hand-soldering.jpg`
+- **What is shown:**
+  - Bench assembly, point-to-point soldering, and trace continuity checks with a digital multimeter on the green perfboard.
+
+---
+
+### 11. [Circuit Board Optical Inspection](author-circuit-inspection.jpg)
+- **File:** `author-circuit-inspection.jpg`
+- **What is shown:**
+  - Close optical inspection of female pin header alignment, solder joints, and perimeter ground rail isolation.
+
+---
+
+### 12. [Workstation Bring-Up — Flashing & Telemetry Testing](author-workstation-bench-testing.jpg)
+- **File:** `author-workstation-bench-testing.jpg`
+- **What is shown:**
+  - Workstation setup flashing the custom `esp-fc` binary over USB and verifying real-time telemetry orientation.
+
+---
+
 ## 🔗 Cross-References
 - [Main README](../../README.md)
 - [Wiring Guide](../wiring-guide.md)
 - [Flashing Guide](../flashing-guide.md)
 - [Master Project Documentation](../master-project-documentation.md)
 - [Engineering Q&A Troubleshooting Journey](../engineering-qa-troubleshooting.md)
+
 

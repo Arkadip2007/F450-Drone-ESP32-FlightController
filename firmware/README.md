@@ -12,3 +12,8 @@ This directory contains both the **precompiled custom binary** and the **complet
 ```bash
 esptool.py --chip esp32 --port COM3 --baud 921600 write_flash -z 0x0 espfc-v0.2.1-custom-bin/espfc_v0.2.1_esp32_custom_0x00.bin
 ```
+
+![Workstation Flashing](../docs/images/author-workstation-bench-testing.jpg)
+
+> **Bench Bring-Up:** Connecting the ESP32 flight controller to the workstation to flash the custom `esp-fc` binary.
+

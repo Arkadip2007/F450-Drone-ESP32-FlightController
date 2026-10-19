@@ -179,6 +179,11 @@ flowchart LR
 | **3.3V** | All I2C Sensors | VCC / 3.3V | Power Supply | Sensor power (from onboard LDO) |
 | **GND** | All Components | GND | Common Ground | **Mandatory:** common ground across all modules |
 
+### 🛠️ Hardware Assembly & Continuity Verification
+![Hand-Soldering Prototype Board](docs/images/author-hardware-assembly-hand-soldering.jpg)
+
+> **Bench Assembly:** Point-to-point soldering, lead preparation, and continuity verification using a digital multimeter on the prototype flight controller board.
+
 ---
 
 ## 5. 📸 Visual Schematics, Bench Hardware & Telemetry Tour
@@ -195,24 +200,42 @@ flowchart LR
 ---
 
 #### 2. Wireless Betaflight Configurator (Over ESP32 Wi-Fi MSP)
-| Wireless Configurator GUI | CLI Hardware Pin Verification |
-| :---: | :---: |
-| ![Betaflight Configurator on ESP32](docs/images/esp32-betaflight-configurator.png) | ![ESP32 CLI Pin Configuration](docs/images/esp32-cli-pin-assignment.png) |
-| Connects to Betaflight Configurator wirelessly via TCP/IP using MultiWii Serial Protocol (MSP). | Hardware resource allocation and timer mapping verification via the esp-fc CLI terminal. |
+![Betaflight Configurator on ESP32](docs/images/esp32-betaflight-configurator.png)
+
+> **Key Observations in this Screenshot:**
+> - Connects to Betaflight Configurator wirelessly via TCP/IP using MultiWii Serial Protocol (MSP).
+> - Allows real-time tuning of PID gains, rate profiles, and motor testing directly from a laptop on the flight field.
 
 ---
 
-#### 3. Wi-Fi SoftAP Pairing & Browser Flasher
-| ESP32 SoftAP Hotspot Discovery | WebSerial One-Click Browser Flasher |
-| :---: | :---: |
-| ![ESP32 Wi-Fi AP](docs/images/esp32-wifi-ap-connection.png) | ![ESP32 Web Flasher](docs/images/esp32-firmware-flasher.png) |
-| Onboard SoftAP mode (`esp-fc-xxxx`) allows instant connection from any computer without an external router. | Browser-based one-click flashing workflow using the Web Serial API and esptool.js. |
+#### 3. Hardware Resource Allocation & CLI Pin Configuration
+![ESP32 CLI Pin Configuration](docs/images/esp32-cli-pin-assignment.png)
+
+> **Key Observations in this Screenshot:**
+> - Shows hardware resource allocation using the esp-fc CLI terminal.
+> - Confirms timer channel mapping for Motor PWM outputs on GPIO 27, 25, 4, and 12 without I2C pin conflicts.
+
+---
+
+#### 4. ESP32 Wi-Fi SoftAP Discovery & Pairing
+![ESP32 Wi-Fi AP](docs/images/esp32-wifi-ap-connection.png)
+
+> **Key Observations in this Screenshot:**
+> - Onboard SoftAP mode (`esp-fc-xxxx`) allows instant wireless connection from any computer or mobile device without requiring a home router.
+
+---
+
+#### 5. WebSerial Browser Firmware Flasher
+![ESP32 Web Flasher](docs/images/esp32-firmware-flasher.png)
+
+> **Key Observations in this Screenshot:**
+> - Browser-based one-click flashing workflow using the Web Serial API and esptool.js.
 
 ---
 
 ### Part B: Physical Flight Controller Hardware & Active Bench Motor Testing
 
-#### 4. Handmade Green Perfboard PCB (Top Headers & Perimeter Ground Rail)
+#### 6. Handmade Green Perfboard PCB (Top Headers & Perimeter Ground Rail)
 | Top View: Component Sockets & ESP32 Pin Headers | Bottom View: Continuous Perimeter Copper Ground Bus |
 | :---: | :---: |
 | ![ESP32 Perfboard Top](docs/images/esp32-green-perfboard-top-headers.jpg) | ![ESP32 Perfboard Bottom](docs/images/esp32-green-perfboard-perimeter-ground-bus.jpg) |
@@ -225,7 +248,14 @@ flowchart LR
 
 ---
 
-#### 5. Phase 1 Minimal Sensor Testing & Full 4-Motor Physical Control
+#### 7. Circuit Board Optical Inspection & Trace Verification
+![Circuit Board Inspection](docs/images/author-circuit-inspection.jpg)
+
+> **Hardware Quality Check:** Visual inspection of female socket alignment, solder fillets, and perimeter ground isolation prior to airframe mounting.
+
+---
+
+#### 8. Phase 1 Minimal Sensor Testing & Full 4-Motor Physical Control
 | Minimal Reliable Sensor Verification (Betaflight) | Complete F450 Bench Setup with Active Motor Control |
 | :---: | :---: |
 | ![ESP32 Minimal Sensors Telemetry](docs/images/esp32-betaflight-minimal-sensors-telemetry.jpg) | ![ESP32 Drone Bench Motor Testing](docs/images/esp32-drone-complete-bench-motor-control.jpg) |
@@ -284,6 +314,11 @@ Located under `sensor-tests/`, these Arduino sketches require **no third-party l
 ---
 
 ## 8. Flashing & PlatformIO Build Guide
+
+### 💻 Workstation Flashing & Live Bring-Up
+![Workstation Flashing](docs/images/author-workstation-bench-testing.jpg)
+
+> **Workstation Bring-Up:** Connecting the assembled ESP32 flight controller over USB to flash firmware binaries and verify real-time telemetry orientation.
 
 ### Option A: Flash Precompiled Custom Binary (Easiest)
 

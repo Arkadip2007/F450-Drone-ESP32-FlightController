@@ -17,6 +17,10 @@ ESP32 GND            <=======>  GND pins of all 3 sensors (COMMON GROUND)
 
 > **Pull-up Resistors Note:** Most breakout boards already feature onboard 4.7kΩ or 10kΩ pull-up resistors on the I2C lines. No external pull-ups are required unless long jumper wires (>15 cm) are used.
 
+![Hardware Assembly](images/author-hardware-assembly-hand-soldering.jpg)
+
+> **Bench Assembly & Continuity Testing:** Point-to-point wiring and checking bus continuity with a digital multimeter.
+
 ---
 
 ## 2. RC Receiver (FlySky i-BUS)
